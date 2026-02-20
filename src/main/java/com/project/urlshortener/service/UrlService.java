@@ -7,6 +7,8 @@ import com.project.urlshortener.dto.ShortenRequest;
 import com.project.urlshortener.dto.ShortenResponse;
 import com.project.urlshortener.entity.Url;
 import com.project.urlshortener.repository.UrlRepository;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,7 +61,7 @@ public class UrlService {
                 url.getExpiresAt()
         );
     }
-
+    @Cacheable(value = "urls", key = "#shortCode")
     public Url getUrlByShortCode(String shortCode) {
         Url url = urlRepository.findByShortCode(shortCode)
                 .orElseThrow(() -> new ResourceNotFoundException("Short URL not found: " + shortCode));
