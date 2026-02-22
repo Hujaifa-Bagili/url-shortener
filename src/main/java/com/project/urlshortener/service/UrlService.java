@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @Service
 public class UrlService {
     private static final String BASE62 = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private static final String BASE_URL ="https://url-shortener-production-4d07.up.railway.app/";
+    private static final String BASE_URL ="url-shortener-production-8d8b.up.railway.app";
 
     @Autowired
     private UrlRepository urlRepository;
