@@ -54,6 +54,7 @@ public class GlobalExceptionHandler {
     // Handles: any other unexpected error
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGeneral(Exception ex) {
+        ex.printStackTrace(); // ADD THIS LINE
         ErrorResponse error = new ErrorResponse(
                 500,
                 "Something went wrong. Please try again.",
